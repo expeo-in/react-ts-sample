@@ -1,39 +1,29 @@
 import { Fragment } from "react";
 import { useState } from "react";
 
-const ListGroup = () => {
-  const cities = ["Chennai", "Bangalore", "Delhi", "Mumbai"];
-  //let selectedIndex = 1;
+interface ComponentProps {
+  items: string[];
+  heading: string;
+  onItemSelected: (item: string) => void;
+}
 
-  //let array = useState(-1);
-  //const selectedIndex = array[0];
-  //const setSelectedIndex = array[1];
+const ListGroup = ({ items, heading, onItemSelected }: ComponentProps) => {
+  // const items: any[] = props.items;
+  // const heading = props.heading;
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  const [name, setName] = useState("siva");
-
-  //const cities: string[] = [];
-
-  const getContent = () => {
-    return cities.length === 0 && <p>No Data from Function</p>;
-  };
-
-  // const handleClick = (event: React.MouseEvent, item: string) => {
-  //   console.log("handle clicked", item, event);
-  // };
 
   const handleClick = (item: string, index: number) => {
-    console.log("handle clicked", item, index);
-    //selectedIndex = index;
     setSelectedIndex(index);
+    onItemSelected(item);
   };
 
   return (
     <>
-      <h1>List Group</h1>
-      {getContent()}
+      <h1>{heading}</h1>
+      {items.length === 0 && <p>No Data from Function</p>}
       <ul className="list-group">
-        {cities.map((item, index) => (
+        {items.map((item, index) => (
           <li
             key={item}
             className={
@@ -45,16 +35,6 @@ const ListGroup = () => {
           </li>
         ))}
       </ul>
-      <p>{name}</p>
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          setName("siva kumar");
-          console.log(name);
-        }}
-      >
-        Update Name
-      </button>
     </>
   );
 };

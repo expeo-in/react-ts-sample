@@ -8,7 +8,16 @@ function App() {
     <>
       <HelloWorld></HelloWorld>
       <hr></hr>
-      <ListGroup></ListGroup>
+      <ListGroup
+        heading="City"
+        items={["Chennai", "Bangalore"]}
+        onItemSelected={(city) => console.log("city selected", city)}
+      ></ListGroup>
+      <ListGroup
+        heading="States"
+        items={["Tamilnadu", "Andhra", "Kerala"]}
+        onItemSelected={(state) => console.log("state selected", state)}
+      ></ListGroup>
     </>
   );
 }
