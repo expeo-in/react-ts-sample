@@ -1,8 +1,10 @@
 import { Fragment } from "react";
 import HelloWorld from "./components/HelloWorld";
+import HelloWorldStyled from "./components/HelloWorld/HelloWorldStyled";
 //import { ListGroup, name  } from "./components/ListGroup";
 import ListGroup from "./components/ListGroup";
 import Counter from "./components/Counter";
+import Alert from "./components/Alert";
 
 function App() {
   const handleItemSelected = (item: string) => {
@@ -10,7 +12,15 @@ function App() {
   };
   return (
     <>
-      <HelloWorld></HelloWorld>
+      <h1 className="txtprimary">React</h1>
+      <HelloWorldStyled></HelloWorldStyled>
+
+      <HelloWorld />
+
+      <Alert>
+        <b>Record saved successfully</b>
+      </Alert>
+
       <hr></hr>
 
       <ListGroup

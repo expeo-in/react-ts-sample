@@ -1,3 +1,7 @@
+//import "./HelloWorld.css";
+
+import styles from "./HelloWorld.module.css";
+
 function HelloWorld() {
   const name = null;
 
@@ -13,7 +17,12 @@ function HelloWorld() {
 
   return (
     <div>
-      <h1>Hello World Component</h1>
+      <h1
+        className={[styles.padXL, styles.txtprimary].join(" ")}
+        style={{ fontSize: "150px", backgroundColor: "red" }}
+      >
+        Hello World Component
+      </h1>
       {name != null && <h2>Hello World {name}</h2>}
 
       <ul>
