@@ -10,7 +10,11 @@ interface ComponentProps {
 const ListGroup = ({ items, heading, onItemSelected }: ComponentProps) => {
   // const items: any[] = props.items;
   // const heading = props.heading;
+  // const onItemSelected = props.onItemSelected;
 
+  //const array = useState(-1);
+  //const selectedIndex = array[0];
+  //const setSelectedIndex = array[1];
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const handleClick = (item: string, index: number) => {
