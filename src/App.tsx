@@ -5,6 +5,9 @@ import HelloWorldStyled from "./components/HelloWorld/HelloWorldStyled";
 import ListGroup from "./components/ListGroup";
 import Counter from "./components/Counter";
 import Alert from "./components/Alert";
+import Like from "./components/Like";
+import ImpureComponent from "./components/ImpureComponent";
+import ToDoList from "./components/ToDoList";
 
 function App() {
   const handleItemSelected = (item: string) => {
@@ -12,6 +15,12 @@ function App() {
   };
   return (
     <>
+      <ToDoList></ToDoList>
+      {/* 
+      <ImpureComponent value={1}></ImpureComponent>
+      <ImpureComponent value={1}></ImpureComponent>
+      <ImpureComponent value={1}></ImpureComponent>
+      <Like></Like>
       <h1 className="txtprimary">React</h1>
       <HelloWorldStyled></HelloWorldStyled>
 
@@ -44,7 +53,7 @@ function App() {
       <Counter
         initialvalue={10}
         onIncremented={(value) => console.log("countr2", value)}
-      ></Counter>
+      ></Counter> */}
     </>
   );
 }

@@ -1,5 +1,5 @@
 //import "./HelloWorld.css";
-
+import { BsFillBellFill } from "react-icons/bs";
 import styles from "./HelloWorld.module.css";
 
 function HelloWorld() {
@@ -30,6 +30,19 @@ function HelloWorld() {
           <li key={item.id}>{item.id + " - " + item.name}</li>
         ))}
       </ul>
+
+      <button
+        style={{
+          backgroundColor: "navy",
+          color: "white",
+        }}
+      >
+        Button 1
+      </button>
+      <br></br>
+      <br></br>
+
+      <BsFillBellFill color="green" size={50}></BsFillBellFill>
     </div>
   );
 }

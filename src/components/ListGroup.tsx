@@ -1,6 +1,21 @@
 import { Fragment } from "react";
 import { useState } from "react";
 
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style: none;
+`;
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const ListItem = styled.li<ListItemProps>`
+  color: red;
+  background-color: ${(props) => (props.active ? "navy" : "lightblue")};
+`;
+
 interface ComponentProps {
   items: string[];
   heading: string;
@@ -26,19 +41,20 @@ const ListGroup = ({ items, heading, onItemSelected }: ComponentProps) => {
     <>
       <h1>{heading}</h1>
       {items.length === 0 && <p>No Data from Function</p>}
-      <ul className="list-group">
+      <List className="list-group">
         {items.map((item, index) => (
-          <li
+          <ListItem
             key={item}
+            active={selectedIndex == index}
             className={
               "list-group-item " + (selectedIndex == index ? " active" : "")
             }
             onClick={() => handleClick(item, index)}
           >
             {item}
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 };
