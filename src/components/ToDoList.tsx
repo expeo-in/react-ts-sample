@@ -1,18 +1,20 @@
 import { useState } from "react";
 
 const ToDoList = () => {
+  //const [name, setName] = useState("siva");
   let [todos, setToDos] = useState(["Learn React", "Do Shopping"]);
 
   const addToDo = () => {
     //todos.push("Watch Movie");
-
     ///let newTodos = ["Learn React", "Do Shopping", "Watch Movie"];
-
     // let newTodos = todos.slice();
     // newTodos.push("Watch Movie");
     // setToDos(newTodos);
-
     setToDos(["Watch Movie", ...todos]);
+
+    // todos.push("Cleaning");
+    // console.log(todos);
+    // setToDos(todos);
   };
 
   const removeToDo = (selectedItem: string) => {
@@ -26,6 +28,9 @@ const ToDoList = () => {
 
     let newToDos = todos.filter((item) => item != selectedItem);
     setToDos(newToDos);
+
+    // todos.pop();
+    // setToDos(todos);
   };
 
   const updateToDo = () => {

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import HelloWorld from "./components/HelloWorld";
 import HelloWorldStyled from "./components/HelloWorld/HelloWorldStyled";
 //import { ListGroup, name  } from "./components/ListGroup";
@@ -8,14 +8,32 @@ import Alert from "./components/Alert";
 import Like from "./components/Like";
 import ImpureComponent from "./components/ImpureComponent";
 import ToDoList from "./components/ToDoList";
+import CustomerComponent from "./components/CustomerComponent";
+import BugsList from "./components/BugsList";
+import Cart from "./components/Cart";
+import NavBar from "./components/NavBar";
+import CustomerForm from "./components/CustomerForm";
 
 function App() {
+  const [items, setItems] = useState(["Product 1", "Product 2"]);
+
+  const addToCart = () => {
+    setItems([...items, "Product 3"]);
+  };
+
   const handleItemSelected = (item: string) => {
     console.log(item);
   };
   return (
     <>
-      <ToDoList></ToDoList>
+      <CustomerForm></CustomerForm>
+
+      {/* <NavBar itemCount={items.length}></NavBar>
+      <Cart items={items} onAdd={addToCart}></Cart> */}
+      {/* <BugsList></BugsList>
+      <CustomerComponent></CustomerComponent>
+      <hr></hr> */}
+      {/* <ToDoList></ToDoList> */}
       {/* 
       <ImpureComponent value={1}></ImpureComponent>
       <ImpureComponent value={1}></ImpureComponent>
