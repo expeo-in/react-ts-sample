@@ -1,0 +1,282 @@
+React Training Notes
+--------------------------------------------------
+//mutable
+end:
+push 
+pop
+
+begining
+unshift
+shift
+
+middle
+splice 
+
+
+//new array
+slice/spread
+map
+filter
+
+
+const todos = ["item1", "item2"];
+const newTodos = [];
+
+for(let i=0; i<todos.length; i++)
+newTodos[i] = todos[i];
+
+todos = [...todos]
+
+
+//mutable
+let person =  {name: "siva", age: 20};
+person.age = 30;
+
+
+//immutable
+let person2 = {...person, age: 30};
+
+-----------------------------------------------------------------------------
+
+//Object
+let person = {name: "siva", age: 20" }
+person.age = 30;
+
+//let newPerson = {name: "siva kumar", age: 30};
+let newPerson = {...person, age; 30};
+
+
+//Array
+let todos = ["todo1", "todo2"];
+let newtodos = [...todos, "todo3"]
+
+todos.map(item => item === "todo1" ? "todo1 changed": item)
+
+todos.filter(item => item !== "todo2")
+
+
+// Array of Objects
+let bugs = [
+    { id: 1, title: "Bug 1", completed: false },
+    { id: 2, title: "Bug 2", completed: false },
+    { id: 3, title: "Bug 3", completed: false },
+  ]
+
+//add new 
+setBugs([...bugs, {id: 4, title: "Bug 4", completed: false}]);
+
+//update
+bugs.map(item => item.id === id ? {...item, completed: true}: item);
+
+
+//delete
+bugs.filter(item => item.id !=== id)
+
+
+immer
+
+let person = {name: "siva", age: 20" }
+person.age = 30;
+
+
+//mutuable
+let bug = bugs.find(item => item.id === id)
+if(bug)
+ bug.completed = true;
+
+
+spread
+copy of object
+let person = {name: "siva", age: 20" }
+let newPerson = {...person};
+
+copy of array
+
+let arr = [1, 2, 3]
+let arr2 = [...arr];
+
+--------------------------------------------------------------------------
+const nameRef = useRef(null);
+const ageRef = useRef(null);
+
+
+<form>
+Name: <input type="text" ref={nameRef}>
+Age: <input type="text" ref={ageRef}>
+</form>
+
+
+nameRef.current.value
+ageRef.current.value
+
+
+<input value="@Model.fname" onChange={}>
+
+
+
+<input value={customer.name} onChange={handleChange}>
+
+
+const {register} = useForm()
+
+
+<input {...register("name")}>
+<input {...register("age")}>
+<input {...register("city")}>
+
+
+---------------------------------------------------------------------------
+Concepts
+destructure object/array
+copy object/array
+immutable
+
+
+component
+return jsx
+dynamic data
+if condition
+rendering list
+event handling
+
+props data
+props function
+state
+share state
+pure components
+styles
+forms
+
+
+$.ajax(
+"url", 
+function(data) {
+$("#list").append(data.map(item => "<li>"  + data.name + "</li>"))
+}
+);
+
+//inline arrow
+<button onClick={() => console.log("button click")}>
+
+//inline arrow with event
+<button onClick={(e) => console.log(e)}>
+
+//named method
+<button onClick={handleClick}>
+
+//pass param to named method
+<button onClick={() => editItem(item, index)}>Edit</button>
+
+
+function add(x, y, z) {
+}
+add(10, 12, 5);
+
+
+let param = {
+x: 10,
+y: 12,
+z: 5
+}
+
+
+function add(p) {
+}
+
+
+
+string str1;
+
+//type
+str1: string;
+
+
+--------------------------------------------------------------
+//object
+let person = {name: "siva", age: 30}
+let name = person.name;
+let age = person.age;
+
+
+//object destructuring
+let {name, age} =  {name: "siva", age: 30}
+or
+let {name, age} =  person;
+
+
+function display() {
+ console.log("hello");
+}
+
+------------------------------------------------------------
+
+//array
+let cities = ["chennai", "mumbai"];
+let array = [1, "chennai", person, display]
+
+let array2 = [{name: "siva", age: 30}, function() {console.log("hi")}];
+array2[1]()
+
+
+let person = array2[0];
+let fn = array2[1];
+
+
+
+//array destructuring
+let [person, fn] = [{name: "siva", age: 30}, function() {console.log("hi")}];
+or
+let [person, fn] = array2;
+
+------------------------------------------------------------
+
+//value types
+let x = 10;
+let y = x;
+x = 15;
+
+//copied by value
+
+
+
+copy object
+let person1 = {name: "siva", age: 30};
+let person2 = person1;
+
+person1.age = 35;
+person2.age //35
+
+//copied by ref
+
+
+//copy
+let person1Copy = {name: person1.name, age: person1.age};
+
+//spread 
+let person1Copy = {...person1}
+
+-------------------------------------------------------------------------
+
+copy array
+
+let array1 = [1, 2, 3];
+let array2 = array1;
+
+//slice
+let array3 = [...array1];
+
+
+---------------------------------------------------------------------------
+
+UI
+Functionality 
+
+---------------------------------------------------------------------------
+
+styling
+ inline styling
+ css file
+ css modules
+ css js
+
+

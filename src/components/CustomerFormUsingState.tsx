@@ -1,27 +1,25 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useState } from "react";
 
-const CustomerForm = () => {
-  const fnameRef = useRef<HTMLInputElement>(null);
-  const ageRef = useRef<HTMLInputElement>(null);
+const CustomerFormUsingState = () => {
+  const [customer, setCustomer] = useState({ fname: "kumar", age: "20" });
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    let customer = {
-      fname: "",
-      age: "",
-    };
-
-    if (fnameRef.current) customer.fname = fnameRef.current.value;
-
-    if (ageRef.current) customer.age = ageRef.current.value;
-
     console.log(customer);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newCustomer = { ...customer };
+
+    if (e.target.id == "fname") newCustomer.fname = e.target.value;
+    else if (e.target.id == "age") newCustomer.age = e.target.value;
+
+    setCustomer(newCustomer);
   };
 
   return (
     <>
-      <h2>Form Using Ref</h2>
+      <h2>Form Using State</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="fname" className="form-label">
@@ -32,7 +30,8 @@ const CustomerForm = () => {
             id="fname"
             name="fname"
             className="form-control"
-            ref={fnameRef}
+            value={customer.fname}
+            onChange={handleChange}
           ></input>
         </div>
         <div className="mb-3">
@@ -44,7 +43,8 @@ const CustomerForm = () => {
             id="age"
             name="age"
             className="form-control"
-            ref={ageRef}
+            value={customer.age}
+            onChange={handleChange}
           ></input>
         </div>
         <button className="btn btn-primary">Submit</button>
@@ -53,4 +53,4 @@ const CustomerForm = () => {
   );
 };
 
-export default CustomerForm;
+export default CustomerFormUsingState;
