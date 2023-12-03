@@ -30,6 +30,10 @@ const RegisterFormUsingRef = () => {
           name="firstName"
           className="form-control"
           ref={fnameRef}
+          type="number"
+          required
+          minLength={10}
+          pattern=""
         ></input>
       </div>
       <div>

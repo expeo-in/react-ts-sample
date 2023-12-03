@@ -1,6 +1,7 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const CustomerForm = () => {
+  const [count, setCount] = useState(0);
   const fnameRef = useRef<HTMLInputElement>(null);
   const ageRef = useRef<HTMLInputElement>(null);
 
@@ -18,6 +19,10 @@ const CustomerForm = () => {
 
     console.log(customer);
   };
+
+  useEffect(() => {
+    if (fnameRef.current) fnameRef.current.focus();
+  });
 
   return (
     <>

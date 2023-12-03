@@ -27,6 +27,10 @@ import Modal from "./components/Modal";
 import "./App.css";
 import SampleIcon from "./components/SampleIcon";
 import RegisterFormUsingRef from "./components/Register/RegisterFormUsingRef";
+import RegisterFormUsingState from "./components/Register/RegisterFormUsingState";
+import RegisterFormUsingRHF from "./components/Register/RegisterFormUsingRHF";
+import RegisterFormUsingZod from "./components/Register/RegisterFormUsingZod";
+import PostList from "./components/PostList";
 
 function App() {
   const [items, setItems] = useState(["Product 1", "Product 2"]);
@@ -51,7 +55,13 @@ function App() {
   return (
     <>
       <h2 className="my-modal">App Component</h2>
-      <RegisterFormUsingRef></RegisterFormUsingRef>
+      <PostList></PostList>
+      {/* <CustomerForm></CustomerForm> */}
+      {/* <RegisterFormUsingRef></RegisterFormUsingRef> */}
+      {/* <RegisterFormUsingState></RegisterFormUsingState> */}
+      {/* <RegisterFormUsingRHF></RegisterFormUsingRHF> */}
+      {/* <RegisterFormUsingZod></RegisterFormUsingZod> */}
+
       {/* <SampleIcon></SampleIcon> */}
       {/* <Modal>
         <h2>Sample Content</h2>
