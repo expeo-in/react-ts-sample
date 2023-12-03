@@ -31,9 +31,16 @@ import RegisterFormUsingState from "./components/Register/RegisterFormUsingState
 import RegisterFormUsingRHF from "./components/Register/RegisterFormUsingRHF";
 import RegisterFormUsingZod from "./components/Register/RegisterFormUsingZod";
 import PostList from "./components/PostList";
+import ToDoListUsingAPI from "./components/ToDoListUsingAPI";
+import ToDoSearch from "./components/ToDoSearch";
 
 function App() {
   const [items, setItems] = useState(["Product 1", "Product 2"]);
+  const [todoStatus, setToDoStatus] = useState("");
+
+  const handleStatusChanged = (status: string) => {
+    setToDoStatus(status);
+  };
 
   const [cartItems, setCartItems] = useState([
     { id: 1, name: "Product 1" },
@@ -55,6 +62,9 @@ function App() {
   return (
     <>
       <h2 className="my-modal">App Component</h2>
+      {/* <ToDoSearch onStatusChanged={handleStatusChanged}></ToDoSearch>
+      <hr></hr>
+      <ToDoListUsingAPI status={todoStatus}></ToDoListUsingAPI> */}
       <PostList></PostList>
       {/* <CustomerForm></CustomerForm> */}
       {/* <RegisterFormUsingRef></RegisterFormUsingRef> */}

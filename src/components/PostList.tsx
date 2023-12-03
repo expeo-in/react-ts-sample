@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 const PostList = () => {
   const [posts, setPosts] = useState<any[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const titleRef = useRef<HTMLInputElement>(null);
 
   const addPost = () => {
@@ -16,10 +17,15 @@ const PostList = () => {
 
     if (titleRef.current) post.title = titleRef.current.value;
 
+    let originalData = [...posts];
+
+    setPosts([post, ...posts]);
+
     axios
-      .post("https://jsonplaceholder.typicode.com/posts", post)
-      .then((res) => {
-        setPosts([res.data, ...posts]);
+      .post("https://xjsonplaceholder.typicode.com/posts", post)
+      .then((res) => {})
+      .catch((error) => {
+        setPosts(originalData);
       });
   };
 
@@ -33,21 +39,31 @@ const PostList = () => {
   };
 
   const deletePost = (id: any) => {
+    setPosts(posts.filter((p) => p.id !== id));
+    let originalData = [...posts];
+
     axios
-      .delete("https://jsonplaceholder.typicode.com/posts/" + id)
-      .then((res) => {
-        setPosts(posts.filter((p) => p.id !== id));
+      .delete("https://xjsonplaceholder.typicode.com/posts/" + id)
+      .then((res) => {})
+      .catch((error) => {
+        setPosts(originalData);
+        setError(error.message);
       });
   };
 
   const loadPosts = () => {
+    setLoading(true);
     axios
-      .get("https://xjsonplaceholder.typicode.com/posts")
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then((res) => {
         console.log(res.data);
         setPosts(res.data);
+        setLoading(false);
       })
-      .catch((error) => setError(error.message));
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
   };
 
   //   useEffect(() => {
@@ -59,6 +75,7 @@ const PostList = () => {
       <h1>Post Lists</h1>
       <button onClick={loadPosts}>Load Data</button>
       {error && <p className="alert alert-danger">{error}</p>}
+      {isLoading && <p className="spinner-border"></p>}
       <div>
         <input type="text" ref={titleRef}></input>
         <button className="btn btn-primary" onClick={addPost}>
