@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useReducer, useState } from "react";
 import HelloWorld from "./components/HelloWorld";
 import HelloWorldStyled from "./components/HelloWorld/HelloWorldStyled";
 //import { ListGroup, name  } from "./components/ListGroup";
@@ -33,6 +33,15 @@ import RegisterFormUsingZod from "./components/Register/RegisterFormUsingZod";
 import PostList from "./components/PostList";
 import ToDoListUsingAPI from "./components/ToDoListUsingAPI";
 import ToDoSearch from "./components/ToDoSearch";
+import { Link } from "react-router-dom";
+import CounterUsingReducer from "./state-management/CounterUsingReducer";
+import TaskWithoutReducer from "./state-management/TaskWithoutReducer";
+import TaskUsingReducer from "./state-management/TaskUsingReducer";
+import TaskContext from "./state-management/task-context";
+import taskReducer from "./state-management/task-reducer";
+import HeaderUsingContext from "./state-management/HeaderUsingContext";
+import counterReducer from "./state-management/counter-reducer";
+import CounterContext from "./state-management/counter-context";
 
 function App() {
   const [items, setItems] = useState(["Product 1", "Product 2"]);
@@ -59,13 +68,21 @@ function App() {
   const handleItemSelected = (item: string) => {
     console.log(item);
   };
+
+  const [tasks, dispatch] = useReducer(taskReducer, []);
+  const [count, dispatchCount] = useReducer(counterReducer, 0);
+
   return (
     <>
+      {/* <nav>
+        <Link to="/">App</Link> <br></br>
+        <Link to="/todos">To Dos</Link>
+      </nav> */}
       <h2 className="my-modal">App Component</h2>
       {/* <ToDoSearch onStatusChanged={handleStatusChanged}></ToDoSearch>
       <hr></hr>
       <ToDoListUsingAPI status={todoStatus}></ToDoListUsingAPI> */}
-      <PostList></PostList>
+      {/* <PostList></PostList> */}
       {/* <CustomerForm></CustomerForm> */}
       {/* <RegisterFormUsingRef></RegisterFormUsingRef> */}
       {/* <RegisterFormUsingState></RegisterFormUsingState> */}
@@ -145,6 +162,16 @@ function App() {
         initialvalue={10}
         onIncremented={(value) => console.log("countr2", value)}
       ></Counter> */}
+
+      <TaskContext.Provider value={{ tasks, dispatch }}>
+        <CounterContext.Provider value={{ count, dispatchCount }}>
+          <HeaderUsingContext></HeaderUsingContext>
+          <h2>State Management</h2>
+          <CounterUsingReducer></CounterUsingReducer>
+          {/* <TaskWithoutReducer></TaskWithoutReducer> */}
+          <TaskUsingReducer></TaskUsingReducer>
+        </CounterContext.Provider>
+      </TaskContext.Provider>
     </>
   );
 }

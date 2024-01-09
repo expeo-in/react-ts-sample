@@ -1,6 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import AuthContext from "../authContext";
 
 const ToDoList = () => {
+  // const { user } = useContext(AuthContext);
+
+  // if (!user) return <Navigate to="/" />;
+
   //const [name, setName] = useState("siva");
   let [todos, setToDos] = useState(["Learn React", "Do Shopping"]);
 
@@ -44,6 +50,7 @@ const ToDoList = () => {
 
   return (
     <>
+      {/* <Link to="/">App</Link> */}
       <ul>
         {todos.map((item) => (
           <li key={item}>

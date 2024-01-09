@@ -1,7 +1,13 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link, Navigate, Outlet } from "react-router-dom";
+import AuthContext from "../authContext";
 
 const PostList = () => {
+  // const { user } = useContext(AuthContext);
+
+  // if (!user) return <Navigate to="/" />;
+
   const [posts, setPosts] = useState<any[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -66,49 +72,57 @@ const PostList = () => {
       });
   };
 
-  //   useEffect(() => {
-
-  //   }, []);
+  useEffect(() => {
+    loadPosts();
+  }, []);
 
   return (
-    <>
-      <h1>Post Lists</h1>
-      <button onClick={loadPosts}>Load Data</button>
-      {error && <p className="alert alert-danger">{error}</p>}
-      {isLoading && <p className="spinner-border"></p>}
-      <div>
-        <input type="text" ref={titleRef}></input>
-        <button className="btn btn-primary" onClick={addPost}>
-          {" "}
-          Add
-        </button>
-      </div>
+    <div className="row">
+      <div className="col-6">
+        <h1>Post Lists</h1>
+        <button onClick={loadPosts}>Load Data</button>
+        {error && <p className="alert alert-danger">{error}</p>}
+        {isLoading && <p className="spinner-border"></p>}
+        <div>
+          <input type="text" ref={titleRef}></input>
+          <button className="btn btn-primary" onClick={addPost}>
+            {" "}
+            Add
+          </button>
+        </div>
 
-      <ul>
-        {posts.map((post) => (
-          <li
-            key={post.id}
-            className="d-flex d-flex-row justify-content-between p-3"
-          >
-            {post.title}
-            <div>
-              <button
-                className="btn btn-primary me-3"
-                onClick={() => updatePost(post)}
-              >
-                Update
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => deletePost(post.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </>
+        <ul>
+          {posts.map((post) => (
+            <li
+              key={post.id}
+              className="d-flex d-flex-row justify-content-between p-3"
+            >
+              <Link to={"/posts/" + post.id}>{post.title}</Link>
+              <div>
+                <Link className="btn btn-primary me-3" to={"/posts/" + post.id}>
+                  Details
+                </Link>
+                <button
+                  className="btn btn-primary me-3"
+                  onClick={() => updatePost(post)}
+                >
+                  Update
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => deletePost(post.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="col-6">
+        <Outlet></Outlet>
+      </div>
+    </div>
   );
 };
 
