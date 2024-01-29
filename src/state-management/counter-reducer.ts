@@ -2,11 +2,13 @@ interface CounterAction {
   type: "INCREMENT" | "DECREMENT" | "RESET";
 }
 
-const counterReducer = (state: number, action: CounterAction) => {
-  if (action.type == "INCREMENT") return state + 2;
-  else if (action.type == "DECREMENT") return state - 2;
+const INCREMENT = "increment";
+
+const counterReducer = (state: any = 0, action: any) => {
+  if (action.type == "INCREMENT") return state + 1;
+  else if (action.type == "DECREMENT") return state - 1;
   else if (action.type == "RESET") return 0;
-  else return state;
+  else return 0;
 };
 
 export const incrementCounter = () => {

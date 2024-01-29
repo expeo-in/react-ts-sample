@@ -42,6 +42,12 @@ import taskReducer from "./state-management/task-reducer";
 import HeaderUsingContext from "./state-management/HeaderUsingContext";
 import counterReducer from "./state-management/counter-reducer";
 import CounterContext from "./state-management/counter-context";
+import { Provider } from "react-redux";
+import reduxStore from "./state-management/counter-redux-store";
+import CounterUsingRedux from "./state-management/CounterUsingRedux";
+import HeaderUsingRedux from "./state-management/HeaderUsingRedux";
+import CounterUsingZustand from "./state-management/CounterUsingZustand";
+import HeaderUsingZustand from "./state-management/HeaderUsingZustand";
 
 function App() {
   const [items, setItems] = useState(["Product 1", "Product 2"]);
@@ -163,15 +169,23 @@ function App() {
         onIncremented={(value) => console.log("countr2", value)}
       ></Counter> */}
 
-      <TaskContext.Provider value={{ tasks, dispatch }}>
+      {/* <TaskContext.Provider value={{ tasks, dispatch }}>
         <CounterContext.Provider value={{ count, dispatchCount }}>
           <HeaderUsingContext></HeaderUsingContext>
           <h2>State Management</h2>
           <CounterUsingReducer></CounterUsingReducer>
-          {/* <TaskWithoutReducer></TaskWithoutReducer> */}
+          <TaskWithoutReducer></TaskWithoutReducer>
           <TaskUsingReducer></TaskUsingReducer>
         </CounterContext.Provider>
-      </TaskContext.Provider>
+      </TaskContext.Provider> */}
+
+      {/* <Provider store={reduxStore}>
+        <HeaderUsingRedux></HeaderUsingRedux>
+        <CounterUsingRedux></CounterUsingRedux>
+      </Provider> */}
+
+      <HeaderUsingZustand></HeaderUsingZustand>
+      <CounterUsingZustand></CounterUsingZustand>
     </>
   );
 }

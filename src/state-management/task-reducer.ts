@@ -20,7 +20,7 @@ type TaskAction = TaskAdd | TaskDelete;
 //add action {type: "ADD", payload: {id: 10, title: "Task 10"}}
 //delete action {type: "DELETE", payload: 1}
 
-const taskReducer = (state: Task[], action: TaskAction) => {
+const taskReducer = (state: Task[] = [], action: TaskAction) => {
   switch (action.type) {
     case "ADD":
       return [...state, action.payload];
