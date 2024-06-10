@@ -1,7 +1,11 @@
 import produce from "immer";
 import { useState } from "react";
+import useAuth from "../auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
   const [items, setItems] = useState([
     { id: 1, name: "Product 1" },
     { id: 2, name: "Product 2" },
@@ -52,6 +56,8 @@ const Products = () => {
     let newItems = items.filter((i) => i.id != item.id);
     setItems(newItems);
   };
+
+  if (!isAuthenticated) return <Navigate to="/login" />;
 
   return (
     <>

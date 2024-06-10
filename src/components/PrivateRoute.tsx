@@ -1,25 +1,25 @@
-import { useContext } from "react";
-import AuthContext from "../authContext";
-import { Navigate, Outlet } from "react-router-dom";
+// import { useContext } from "react";
+// import AuthContext from "../authContext";
+// import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateRoute = (props: any) => {
-  const { user } = useContext(AuthContext);
+// const PrivateRoute = (props: any) => {
+//   const { user } = useContext(AuthContext);
 
-  if (!user) return <Navigate to="/" />;
+//   if (!user) return <Navigate to="/" />;
 
-  //return <Outlet></Outlet>;
-  return <div>{props.children}</div>;
-};
+//   //return <Outlet></Outlet>;
+//   return <div>{props.children}</div>;
+// };
 
-export default PrivateRoute;
+// export default PrivateRoute;
 
-const AdminRoute = (props: any) => {
-  const { user } = useContext(AuthContext);
+// const AdminRoute = (props: any) => {
+//   const { user } = useContext(AuthContext);
 
-  if (!user) return <Navigate to="/login" />;
+//   if (!user) return <Navigate to="/login" />;
 
-  if (user.role !== "Admin") return <Navigate to="/accessdenied" />;
+//   if (user.role !== "Admin") return <Navigate to="/accessdenied" />;
 
-  //return <Outlet></Outlet>;
-  return <div>{props.children}</div>;
-};
+//   //return <Outlet></Outlet>;
+//   return <div>{props.children}</div>;
+// };

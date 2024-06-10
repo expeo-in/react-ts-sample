@@ -85,6 +85,22 @@ function App() {
         <Link to="/todos">To Dos</Link>
       </nav> */}
       <h2 className="my-modal">App Component</h2>
+      <div>
+        <Link to="/">Home</Link>
+      </div>
+      <div>
+        <Link to="/products">Products</Link>
+      </div>
+      <div>
+        <Link to="/counter">Counter</Link>
+      </div>
+      <div>
+        <Link to="/posts">Posts</Link>
+      </div>
+      <div>
+        <Link to="/comments">Comments</Link>
+      </div>
+
       {/* <ToDoSearch onStatusChanged={handleStatusChanged}></ToDoSearch>
       <hr></hr>
       <ToDoListUsingAPI status={todoStatus}></ToDoListUsingAPI> */}
@@ -184,8 +200,8 @@ function App() {
         <CounterUsingRedux></CounterUsingRedux>
       </Provider> */}
 
-      <HeaderUsingZustand></HeaderUsingZustand>
-      <CounterUsingZustand></CounterUsingZustand>
+      {/* <HeaderUsingZustand></HeaderUsingZustand>
+      <CounterUsingZustand></CounterUsingZustand> */}
     </>
   );
 }
